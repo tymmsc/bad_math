@@ -28,7 +28,7 @@ public class FlipScript : OperatorScript {
 		
 	}
 
-    public override bool DoOp(Equation inputEq)
+    public override bool DoOp(Equation inputEq, Dictionary<string, string> options)
     {
         //flip the input equation and output the new one. 
         //if there are non-allowed characters, then return null 

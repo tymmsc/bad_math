@@ -17,11 +17,7 @@ public class OperatorScript : MonoBehaviour {
 	void Update () {
 		
 	}
-
-		public virtual bool DoOp(Equation e) {
-			return false;
-		}
-    public virtual bool DoOp(Equation e, string side)
+    public virtual bool DoOp(Equation e, Dictionary<string, string> options)
     {
         return false;
     }

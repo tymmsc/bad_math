@@ -13,7 +13,7 @@ public class RemoveLeadingDigits : OperatorScript{
 	void Update () {
 		
 	}
-    public override bool DoOp(Equation inputEq)
+    public override bool DoOp(Equation inputEq, Dictionary<string, string> options)
     {
         string newRight = "";
             string newLeft = "";
