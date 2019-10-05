@@ -18,7 +18,10 @@ public class OperatorScript : MonoBehaviour {
 		
 	}
 
-    public virtual bool DoOp(Equation e)
+		public virtual bool DoOp(Equation e) {
+			return false;
+		}
+    public virtual bool DoOp(Equation e, string side)
     {
         return false;
     }

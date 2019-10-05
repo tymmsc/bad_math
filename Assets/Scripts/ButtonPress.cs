@@ -11,6 +11,7 @@ using UnityEngine;
 
 public class ButtonPress : MonoBehaviour {
     public GameObject operatorObject;
+    public string side;
     protected OperatorScript fs;
 	// Use this for initialization
 	void Start () {
@@ -28,7 +29,13 @@ public class ButtonPress : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        bool n = fs.DoOp(GameManager.instance.currentEquation.GetComponent<Equation>());
+        bool n = false;
+        if(side != "") {
+            n = fs.DoOp(GameManager.instance.currentEquation.GetComponent<Equation>(), side);
+        }
+        else {
+            n = fs.DoOp(GameManager.instance.currentEquation.GetComponent<Equation>());
+        }
         if (false == n)
         {
             GetComponent<SpriteRenderer>().color = new Color(.5f, .0f, .0f);
