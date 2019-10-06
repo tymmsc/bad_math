@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
     public float score;
     public GameObject currentEquation;
+    public GameObject pastEquations;
 
     private void Awake()
     {

@@ -14,11 +14,19 @@ public class Equation : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        GetComponent<Text>().text = leftSide + "=" + rightSide;
+        GetComponent<Text>().text = this.toString();
 	}
-	
+	public void setSides(string leftSide, string rightSide)
+    {
+        this.leftSide = leftSide;
+        this.rightSide = rightSide;
+    }
+    public string toString()
+    {
+        return leftSide + "=" + rightSide;
+    }
 	// Update is called once per frame
 	void Update () {
-        GetComponent<Text>().text = leftSide + "=" + rightSide;
+        GetComponent<Text>().text = this.toString() ;
     }
 }

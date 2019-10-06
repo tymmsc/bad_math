@@ -22,7 +22,15 @@ public class TrailingZeroScript : OperatorScript
 
     public override bool DoOp(Equation inputEq, Dictionary<string, string> options)
     {
-        string side = options["side"];
+        string side;
+        if (options!=null && options.ContainsKey("side"))
+        {
+            side = options["side"];
+        }
+        else
+        {
+            side = null;
+        }
         //the new strings are the old strings with 0s at the end
         if(side == "right") {
             string newRight = inputEq.rightSide + "0";       
