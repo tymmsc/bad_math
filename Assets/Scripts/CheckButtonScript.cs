@@ -40,7 +40,7 @@ public class CheckButtonScript : MonoBehaviour
         else
         {
             //if it is successful turn it gray
-            GetComponent<SpriteRenderer>().color = new Color(.5f, .5f, .5f);
+           GetComponent<SpriteRenderer>().color = new Color(.5f, .5f, .5f);
 
         }
         //Call some other function to do somethng, maybe

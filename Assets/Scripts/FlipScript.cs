@@ -14,7 +14,8 @@ public class FlipScript : OperatorScript {
         {"6", null },
         {"7", null },
         {"8", "8" },
-        {"9",null }
+        {"9",null },
+        {"-", null }
     };
    
 	// Use this for initialization

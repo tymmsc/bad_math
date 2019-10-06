@@ -38,11 +38,13 @@ public class GameManager : MonoBehaviour {
         string leftSide = currentEquation.GetComponent<Equation>().leftSide;
         string rightSide = currentEquation.GetComponent<Equation>().rightSide;
         bool solved = leftSide.Equals(rightSide);
-        if (solved){
+        bool parse_solved = (int.Parse(leftSide) == int.Parse(rightSide));
+        if (solved || parse_solved){
             level = level + 1;
             initializeLevel();
+            return true;
         }
-        return solved;
+        return false;
   
     }
     void Start () {

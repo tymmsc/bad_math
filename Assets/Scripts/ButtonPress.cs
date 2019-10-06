@@ -12,10 +12,29 @@ using UnityEngine;
 public class ButtonPress : MonoBehaviour {
     public GameObject operatorObject;
     protected OperatorScript fs;
+    public Dictionary<string, string> options;
+    public string side;
+    public string location;
+    public string number;
 	// Use this for initialization
 	void Start () {
         fs = operatorObject.GetComponent<OperatorScript>();
-	}
+        options = new Dictionary<string, string>();
+        if (side!="")
+        {
+            options["side"] = side;
+        }
+        if (location != "")
+        {
+            options["location"] = location; 
+        }
+        if (number != "")
+        {
+            options["number"] = number;
+        }
+
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -31,7 +50,7 @@ public class ButtonPress : MonoBehaviour {
         Equation currentEquation = new Equation();
         currentEquation.leftSide = GameManager.instance.currentEquation.GetComponent<Equation>().leftSide;
         currentEquation.rightSide = GameManager.instance.currentEquation.GetComponent<Equation>().rightSide;
-        bool n = fs.DoOp(GameManager.instance.currentEquation.GetComponent<Equation>(), null);
+        bool n = fs.DoOp(GameManager.instance.currentEquation.GetComponent<Equation>(), options);
         //if it's not possible here, turn it red
         if (false == n)
         {
@@ -39,7 +58,7 @@ public class ButtonPress : MonoBehaviour {
         }
         else
         {
-            //if it is successful turn it gray
+            //if it is successful turn it gray, and update the equation panels 
             GetComponent<SpriteRenderer>().color = new Color(.5f, .5f, .5f);
             GameManager.instance.pastEquations.GetComponent<EquationArray>().PushEquation(currentEquation);
         }
