@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
     public float score;
     public GameObject currentEquation;
     public GameObject pastEquations;
+    public int level; 
 
     private void Awake()
     {
@@ -31,9 +32,29 @@ public class GameManager : MonoBehaviour {
 
     }
     // Use this for initialization
+
+    public bool CheckIfSolved()
+    {
+        string leftSide = currentEquation.GetComponent<Equation>().leftSide;
+        string rightSide = currentEquation.GetComponent<Equation>().rightSide;
+        bool solved = leftSide.Equals(rightSide);
+        if (solved){
+            level = level + 1;
+            initializeLevel();
+        }
+        return solved;
+  
+    }
     void Start () {
-		
+        initializeLevel();
 	}
+
+    void initializeLevel()
+    {
+        currentEquation.GetComponent<Equation>().leftSide = "0";
+        currentEquation.GetComponent<Equation>().rightSide = level.ToString();
+        pastEquations.GetComponent<EquationArray>().Reset();
+    }
 	
 	// Update is called once per frame
 	void Update () {

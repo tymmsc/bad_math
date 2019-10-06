@@ -11,7 +11,13 @@ public class EquationArray : MonoBehaviour
     void Start()
     {
         mytext = GetComponent<Text>();
+        Reset();
+    }
+
+    public void Reset()
+    {
         mytext.text = "";
+        equations.Clear();
     }
 
     public bool PopEquation() { 
