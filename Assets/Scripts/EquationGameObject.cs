@@ -8,8 +8,8 @@ public class EquationGameObject : MonoBehaviour
     public GameObject[] digitSprites;
     Dictionary<char, GameObject> digitDict;
     Equation equation;
-    List<DigitObject> digitListRight;
-    List<DigitObject> digitListLeft;
+    public List<GameObject> digitListRight;
+    public List<GameObject> digitListLeft;
     float digit_width; 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +32,8 @@ public class EquationGameObject : MonoBehaviour
     }
     public void setEquation(Equation e)
     {
+        digitListLeft.Clear();
+        digitListRight.Clear();
         //first delete all the old gameobjects
         foreach (Transform child in transform.Find("leftside"))
         {
@@ -51,14 +53,17 @@ public class EquationGameObject : MonoBehaviour
             //Instantiate the digit prefab and put it as a child on the correct side
 
             GameObject digit = Instantiate(digitDict[fullString[i]]);
+    
             if (i < equals_index) {
+                digitListLeft.Add(digit);
                 digit.transform.SetParent(transform.GetChild(0));
-                digit.GetComponent<DigitObject>().side = 0;
+                digit.GetComponent<DigitObject>().side = -1;
             digit.GetComponent<DigitObject>().place = i;
             digit.GetComponent<DigitObject>().value = e.leftSide[i].ToString();
             }
             else if(i > equals_index)
             {
+                digitListRight.Add(digit);
                 digit.transform.SetParent(transform.GetChild(1));
                 int sideInd = i - equals_index - 1;
                 
@@ -70,9 +75,14 @@ public class EquationGameObject : MonoBehaviour
             {
                 digit.transform.SetParent(transform.GetChild(0));
                 digit.GetComponent<DigitObject>().value = "=";
+                digit.GetComponent<DigitObject>().side = 0;
             }
             //put it i* one digit-width away from the start
-            digit.transform.position = new Vector3(this.transform.position.x + i * digit_width*1.1f, this.transform.position.y, this.transform.position.z);
+            float spacing = 1.1f;
+            float total_length = (digit_width * spacing * fullString.Length) - (digit_width * (spacing - 1));
+            Transform startPosition = transform.parent.Find("currentLineStart");
+            transform.position = new Vector3(startPosition.position.x + total_length/2.0f, this.transform.position.y, this.transform.position.z);
+            digit.transform.position = new Vector3(startPosition.position.x + digit_width/2.0f+ i * digit_width*spacing, this.transform.position.y, this.transform.position.z);
 
         }
 

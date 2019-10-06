@@ -58,6 +58,7 @@ public class ButtonPress : MonoBehaviour {
         }
         else
         {
+
             //if it is successful turn it gray, and update the equation panels 
             GetComponent<SpriteRenderer>().color = new Color(.5f, .5f, .5f);
             GameManager.instance.pastEquations.GetComponent<EquationArray>().PushEquation(currentEquation);

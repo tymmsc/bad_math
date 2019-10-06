@@ -29,6 +29,17 @@ public class FlipScript : OperatorScript {
 		
 	}
 
+    IEnumerator FlipEquation(Equation inputEq, string newLeft, string newRight)
+    {
+
+
+        GameManager.instance.currentEquationObj.GetComponent<Animator>().SetBool("flip", true);
+        yield return new WaitForSeconds(0.67f);
+        GameManager.instance.currentEquationObj.GetComponent<Animator>().SetBool("flip", false);
+        yield return new WaitForSeconds(0.01f);
+        inputEq.setEquation(newLeft, newRight);
+    }
+
     public override bool DoOp(Equation inputEq, Dictionary<string, string> options)
     {
         //flip the input equation and output the new one. 
@@ -56,7 +67,7 @@ public class FlipScript : OperatorScript {
             }
             newLeft = flipped + newLeft;
         }
-        inputEq.setEquation(newLeft, newRight);
+        StartCoroutine(FlipEquation(inputEq, newLeft, newRight));
 
   
         return true;

@@ -41,6 +41,38 @@ public class RotateInPlaceScript : OperatorScript
     {
         
     }
+
+    IEnumerator RotateNumbers(Equation inputEq, string newLeft, string newRight, int rot)
+    {
+        EquationGameObject eqObj = inputEq.GetComponent<EquationGameObject>();
+        //for each digit of eqObj:
+        string animBoolName;
+        if(rot == 90)
+        {
+            animBoolName = "rot90"; 
+        }
+        else
+        {
+            animBoolName = "rot180";
+        }
+        List<GameObject> digitListAll = new List<GameObject>();
+        digitListAll.AddRange(eqObj.digitListLeft);
+        digitListAll.AddRange(eqObj.digitListRight);
+        foreach (GameObject g in digitListAll)
+        {
+            g.GetComponent<Animator>().SetBool(animBoolName, true);
+        }
+        yield return new WaitForSeconds(0.67f);
+        foreach (GameObject g in digitListAll)
+        {
+            g.GetComponent<Animator>().SetBool("flip", false);
+        }
+        yield return new WaitForSeconds(0.01f);
+
+
+        inputEq.setEquation(newLeft, newRight);
+    }
+
     public override bool DoOp(Equation inputEq, Dictionary<string, string> options)
     {
         int rotation;
@@ -130,7 +162,7 @@ public class RotateInPlaceScript : OperatorScript
         }
 
 
-        inputEq.setEquation(newLeft, newRight);
+        StartCoroutine(RotateNumbers(inputEq,newLeft,newRight,rotation));
         return true;
     }
 }
