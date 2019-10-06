@@ -33,19 +33,20 @@ public class TrailingZeroScript : OperatorScript
         }
         //the new strings are the old strings with 0s at the end
         if(side == "right") {
-            string newRight = inputEq.rightSide + "0";       
-            inputEq.rightSide = newRight;     
+            string newRight = inputEq.rightSide + "0";
+            string newLeft = inputEq.leftSide;
+            inputEq.setEquation(newLeft, newRight);
         }
         else if(side == "left") {
             string newLeft = inputEq.leftSide + "0" ;
-            inputEq.leftSide = newLeft;
+            string newRight = inputEq.rightSide;
+            inputEq.setEquation(newLeft, newRight);
         }
         else {
             string newRight = inputEq.rightSide + "0";
             string newLeft = inputEq.leftSide + "0" ;
 
-            inputEq.leftSide = newLeft;
-            inputEq.rightSide = newRight;
+            inputEq.setEquation(newLeft, newRight);
         }
         return true;
     }

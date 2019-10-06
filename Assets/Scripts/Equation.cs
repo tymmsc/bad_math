@@ -8,25 +8,31 @@ using UnityEngine.UI;
 
 public class Equation : MonoBehaviour {
 
-    public string leftSide; 
-    public string rightSide;
+   public string leftSide; 
+   public string rightSide;
     
 	// Use this for initialization
 	void Start () {
 
-        GetComponent<Text>().text = this.toString();
+       // GetComponent<Text>().text = this.toString();
 	}
-	public void setSides(string leftSide, string rightSide)
+    public void setEquation(string leftSide, string rightSide)
     {
         this.leftSide = leftSide;
         this.rightSide = rightSide;
+        GetComponent<EquationGameObject>().setEquation(this);
     }
-    public string toString()
+	/*public void setSides(string leftSide, string rightSide)
+    {
+        this.leftSide = leftSide;
+        this.rightSide = rightSide;
+    }*/
+    public string ToString()
     {
         return leftSide + "=" + rightSide;
     }
 	// Update is called once per frame
 	void Update () {
-        GetComponent<Text>().text = this.toString() ;
+       // GetComponent<Text>().text = this.toString() ;
     }
 }

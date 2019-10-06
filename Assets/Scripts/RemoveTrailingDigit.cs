@@ -25,8 +25,7 @@ public class RemoveTrailingDigit : OperatorScript
         {
             newRight = inputEq.rightSide.Substring(0,rightLength -1);
             newLeft = inputEq.leftSide.Substring(0, leftLength -1);
-            inputEq.leftSide = newLeft;
-            inputEq.rightSide = newRight;
+            inputEq.setEquation(newLeft, newRight);
             return true;
         }
         return false;

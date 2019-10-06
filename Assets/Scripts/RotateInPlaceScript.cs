@@ -128,10 +128,9 @@ public class RotateInPlaceScript : OperatorScript
             }
             newRight = newRight + rotated;
         }
-      
 
-        inputEq.leftSide = newLeft;
-        inputEq.rightSide = newRight;
+
+        inputEq.setEquation(newLeft, newRight);
         return true;
     }
 }

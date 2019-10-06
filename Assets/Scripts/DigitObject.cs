@@ -2,16 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SeparateIntoNumbers : MonoBehaviour
+public class DigitObject : MonoBehaviour
 {
-    //for joining and separating:
-    // 8 --> -0 or 13
-    //7 = -1
-    // 9 = 01 and -4
-    //6 = 10
-    //
-
-
+    public int place;
+    public int side;
+    public string value;
     // Start is called before the first frame update
     void Start()
     {

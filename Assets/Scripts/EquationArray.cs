@@ -25,7 +25,8 @@ public class EquationArray : MonoBehaviour
             return false;
         }
         Equation previous = equations.Pop();
-        GameManager.instance.currentEquation.GetComponent<Equation>().setSides(previous.leftSide, previous.rightSide);
+        GameManager.instance.currentEquationObj.GetComponent<Equation>().setEquation(previous.leftSide, previous.rightSide);
+
         int lastLineStart = mytext.text.LastIndexOf("\n");
         mytext.text = mytext.text.Substring(0,lastLineStart);
         return true;
@@ -35,7 +36,7 @@ public class EquationArray : MonoBehaviour
     {
 
         //Write the equation to a new line
-        mytext.text = mytext.text + "\n" + e.toString();
+        mytext.text = mytext.text + "\n" + e.ToString();
         //And put it in the stack too
         equations.Push(e);
 

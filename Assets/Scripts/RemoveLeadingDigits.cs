@@ -24,8 +24,7 @@ public class RemoveLeadingDigits : OperatorScript{
         {
             newRight = inputEq.rightSide.Substring(1);
             newLeft = inputEq.leftSide.Substring(1);
-            inputEq.leftSide = newLeft;
-            inputEq.rightSide = newRight;
+            inputEq.setEquation(newLeft, newRight);
             return true;
         }
         return false;

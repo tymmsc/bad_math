@@ -56,8 +56,9 @@ public class FlipScript : OperatorScript {
             }
             newLeft = flipped + newLeft;
         }
-        inputEq.leftSide = newLeft;
-        inputEq.rightSide = newRight;
+        inputEq.setEquation(newLeft, newRight);
+
+  
         return true;
 
         //left side = right side

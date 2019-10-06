@@ -12,8 +12,10 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
     public float score;
     public GameObject currentEquation;
+    public GameObject currentEquationObj;
     public GameObject pastEquations;
-    public int level; 
+    public int level;
+    public GameObject qedStamp;
 
     private void Awake()
     {
@@ -32,20 +34,35 @@ public class GameManager : MonoBehaviour {
 
     }
     // Use this for initialization
+    IEnumerator Wait(float duration)
+    {
+        //This is a coroutine
+        Debug.Log("Start Wait() function. The time is: " + Time.time);
+        Debug.Log("Float duration = " + duration);
+        yield return new WaitForSeconds(duration);   //Wait
+        Debug.Log("End Wait() function and the time is: " + Time.time);
+    }
 
     public bool CheckIfSolved()
     {
-        string leftSide = currentEquation.GetComponent<Equation>().leftSide;
-        string rightSide = currentEquation.GetComponent<Equation>().rightSide;
+        string leftSide = currentEquationObj.GetComponent<Equation>().leftSide;
+        string rightSide = currentEquationObj.GetComponent<Equation>().rightSide;
         bool solved = leftSide.Equals(rightSide);
         bool parse_solved = (int.Parse(leftSide) == int.Parse(rightSide));
         if (solved || parse_solved){
-            level = level + 1;
-            initializeLevel();
+            StartCoroutine(GoToNextLevel());
             return true;
         }
         return false;
   
+    }
+    IEnumerator GoToNextLevel()
+    {
+        qedStamp.SetActive(true);
+        yield return new WaitForSeconds(1.0f);
+        qedStamp.SetActive(false);
+        level = level + 1;
+        initializeLevel();
     }
     void Start () {
         initializeLevel();
@@ -53,9 +70,10 @@ public class GameManager : MonoBehaviour {
 
     void initializeLevel()
     {
-        currentEquation.GetComponent<Equation>().leftSide = "0";
-        currentEquation.GetComponent<Equation>().rightSide = level.ToString();
+        //setting left side and right side
+        currentEquationObj.GetComponent<Equation>().setEquation( "0", level.ToString());
         pastEquations.GetComponent<EquationArray>().Reset();
+        
     }
 	
 	// Update is called once per frame

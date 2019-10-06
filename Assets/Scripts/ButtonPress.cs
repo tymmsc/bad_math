@@ -48,9 +48,9 @@ public class ButtonPress : MonoBehaviour {
     private void OnMouseDown()
     {
         Equation currentEquation = new Equation();
-        currentEquation.leftSide = GameManager.instance.currentEquation.GetComponent<Equation>().leftSide;
-        currentEquation.rightSide = GameManager.instance.currentEquation.GetComponent<Equation>().rightSide;
-        bool n = fs.DoOp(GameManager.instance.currentEquation.GetComponent<Equation>(), options);
+        currentEquation.leftSide = GameManager.instance.currentEquationObj.GetComponent<Equation>().leftSide;
+        currentEquation.rightSide = GameManager.instance.currentEquationObj.GetComponent<Equation>().rightSide;
+        bool n = fs.DoOp(GameManager.instance.currentEquationObj.GetComponent<Equation>(), options);
         //if it's not possible here, turn it red
         if (false == n)
         {
