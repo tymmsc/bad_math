@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//this script actually adds any leading digit you want. 
 public class TrailingZeroScript : OperatorScript
 {
 
@@ -31,20 +32,24 @@ public class TrailingZeroScript : OperatorScript
         {
             side = null;
         }
+        string digit = "0";
+        if(options!=null && options.ContainsKey("number")){
+            digit = options["number"];
+        }
         //the new strings are the old strings with 0s at the end
         if(side == "right") {
-            string newRight = inputEq.rightSide + "0";
+            string newRight = digit + inputEq.rightSide;
             string newLeft = inputEq.leftSide;
             inputEq.setEquation(newLeft, newRight);
         }
         else if(side == "left") {
-            string newLeft = inputEq.leftSide + "0" ;
+            string newLeft = digit + inputEq.leftSide ;
             string newRight = inputEq.rightSide;
             inputEq.setEquation(newLeft, newRight);
         }
         else {
-            string newRight = inputEq.rightSide + "0";
-            string newLeft = inputEq.leftSide + "0" ;
+            string newRight = digit + inputEq.rightSide;
+            string newLeft = digit + inputEq.leftSide;
 
             inputEq.setEquation(newLeft, newRight);
         }
