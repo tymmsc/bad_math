@@ -35,4 +35,25 @@ public class Equation : MonoBehaviour {
 	void Update () {
        // GetComponent<Text>().text = this.toString() ;
     }
+    public string GetSubstrByIndex(int side, int place, int length)
+    {
+        string side_str;
+        if (side == -1)
+        {
+            side_str = leftSide;
+        }
+        else
+        {
+            side_str = rightSide;
+        }
+        if(place+length > side_str.Length)
+        {
+            return "";
+        }
+        else
+        {
+            return (side_str.Substring(place, length));
+        }
+    }
+
 }

@@ -16,6 +16,11 @@ public class GameManager : MonoBehaviour {
     public GameObject pastEquations;
     public int level;
     public GameObject qedStamp;
+    public bool digitSelect = false;
+    public bool digitPairSelect = false;
+    public string stringSelection = "";
+    public DigitObject DigitsToMerge = null;
+
 
     private void Awake()
     {

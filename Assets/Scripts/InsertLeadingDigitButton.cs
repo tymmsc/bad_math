@@ -19,7 +19,8 @@ public class InsertLeadingDigitButton : MonoBehaviour
     public string location;
     public string number;
     // Use this for initialization
-  
+    public Sprite spriteImage;
+    Sprite spriteOver;
 
     // Use this for initialization
 
@@ -40,6 +41,17 @@ public class InsertLeadingDigitButton : MonoBehaviour
         {
             options["number"] = number;
         }
+        spriteOver = GetComponent<SpriteRenderer>().sprite;
+        GetComponent<SpriteRenderer>().sprite = spriteImage;
+
+    }
+    private void OnMouseEnter()
+    {
+        GetComponent<SpriteRenderer>().sprite = spriteOver;
+    }
+    private void OnMouseExit()
+    {
+        GetComponent<SpriteRenderer>().sprite = spriteImage;
     }
 
     // Update is called once per frame

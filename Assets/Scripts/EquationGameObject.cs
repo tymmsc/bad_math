@@ -7,7 +7,7 @@ public class EquationGameObject : MonoBehaviour
     //The prefab will hold the sprites for every character
     public GameObject[] digitSprites;
     Dictionary<char, GameObject> digitDict;
-    Equation equation;
+    public Equation equation;
     public List<GameObject> digitListRight;
     public List<GameObject> digitListLeft;
     float digit_width; 

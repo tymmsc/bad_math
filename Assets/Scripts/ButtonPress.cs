@@ -16,6 +16,8 @@ public class ButtonPress : MonoBehaviour {
     public string side;
     public string location;
     public string number;
+    public Sprite spriteImage;
+    Sprite spriteOver;
 	// Use this for initialization
 	void Start () {
         fs = operatorObject.GetComponent<OperatorScript>();
@@ -32,12 +34,23 @@ public class ButtonPress : MonoBehaviour {
         {
             options["number"] = number;
         }
+        spriteOver = GetComponent<SpriteRenderer>().sprite;
+        GetComponent<SpriteRenderer>().sprite = spriteImage;
+        
 
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+    private void OnMouseEnter()
+    {
+        GetComponent<SpriteRenderer>().sprite = spriteOver;
+    }
+    private void OnMouseExit()
+    {
+        GetComponent < SpriteRenderer>().sprite = spriteImage;
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
     private void OnMouseOver()
