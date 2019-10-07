@@ -77,7 +77,7 @@ public class MergeScript : OperatorScript
         }
         else if(side == "left")
         {
-            newString = newString + inputEq.leftSide.Substring(0, i-1);
+            newString = newString + inputEq.leftSide.Substring(0, i);
             if(!mapping.ContainsKey(inputEq.leftSide.Substring(i, 2))) {
                 return false;
             }
