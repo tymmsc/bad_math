@@ -57,6 +57,7 @@ public class EquationGameObject : MonoBehaviour
             if (i < equals_index) {
                 digitListLeft.Add(digit);
                 digit.transform.SetParent(transform.GetChild(0));
+                digit.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                 digit.GetComponent<DigitObject>().side = -1;
             digit.GetComponent<DigitObject>().place = i;
             digit.GetComponent<DigitObject>().value = e.leftSide[i].ToString();
@@ -65,6 +66,7 @@ public class EquationGameObject : MonoBehaviour
             {
                 digitListRight.Add(digit);
                 digit.transform.SetParent(transform.GetChild(1));
+                digit.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                 int sideInd = i - equals_index - 1;
                 
                 digit.GetComponent<DigitObject>().side = 1;
@@ -74,6 +76,7 @@ public class EquationGameObject : MonoBehaviour
             else
             {
                 digit.transform.SetParent(transform.GetChild(0));
+                digit.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                 digit.GetComponent<DigitObject>().value = "=";
                 digit.GetComponent<DigitObject>().side = 0;
             }

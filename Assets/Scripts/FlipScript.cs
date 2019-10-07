@@ -36,7 +36,10 @@ public class FlipScript : OperatorScript {
         GameManager.instance.currentEquationObj.GetComponent<Animator>().SetBool("flip", true);
         yield return new WaitForSeconds(0.67f);
         GameManager.instance.currentEquationObj.GetComponent<Animator>().SetBool("flip", false);
-        yield return new WaitForSeconds(0.01f);
+        while (GameManager.instance.currentEquationObj.transform.localScale.x < 0)
+        {
+            yield return 0;
+        }
         inputEq.setEquation(newLeft, newRight);
     }
 

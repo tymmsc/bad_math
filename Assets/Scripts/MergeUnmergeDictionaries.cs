@@ -32,6 +32,7 @@ public class MergeUnmergeDictionaries : MonoBehaviour
         mergeList.Add(new stringPair("-0", "8"));
         splitList.Add(new stringPair("6", "15"));
         mergeList.Add(new stringPair("-1", "7"));
+        mergeList.Add(new stringPair("-4", "9"));
         splitList.Add(new stringPair("7", "-1"));
         mergeList.Add(new stringPair("13", "8"));
         splitList.Add(new stringPair("8", "-0"));
@@ -43,6 +44,7 @@ public class MergeUnmergeDictionaries : MonoBehaviour
         splitList.Add(new stringPair("8", "61"));
         mergeList.Add(new stringPair("61", "8"));
         splitList.Add(new stringPair("9", "51"));
+        splitList.Add(new stringPair("9", "-4"));
 
     }
 

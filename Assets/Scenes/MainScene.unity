@@ -1298,7 +1298,7 @@ GameObject:
   - component: {fileID: 335231222}
   - component: {fileID: 335231225}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: merge_spritebutton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1465,8 +1465,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 24.1, y: -19.6}
-  m_SizeDelta: {x: 122.1, y: 100}
+  m_AnchoredPosition: {x: 24.1, y: -6.6}
+  m_SizeDelta: {x: 122.1, y: 119.84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &386644079
 MonoBehaviour:
@@ -2105,7 +2105,7 @@ GameObject:
   - component: {fileID: 544546118}
   - component: {fileID: 544546117}
   m_Layer: 5
-  m_Name: Dropdown (1)
+  m_Name: merge_dropdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3384,7 +3384,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 785696521}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -105.6, y: -44.4, z: 0.00002}
+  m_LocalPosition: {x: -110.8, y: -39.4, z: 0.00002}
   m_LocalScale: {x: 12.428223, y: 10.869701, z: 19.865736}
   m_Children: []
   m_Father: {fileID: 454956943}
@@ -3846,7 +3846,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00090676104, y: 173.92984}
+  m_AnchoredPosition: {x: 0.00090676104, y: 164.00977}
   m_SizeDelta: {x: 443.5, y: 1365.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &944387016
@@ -4345,7 +4345,7 @@ GameObject:
   - component: {fileID: 1101651540}
   - component: {fileID: 1101651537}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: split_spritebutton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6327,7 +6327,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640058679}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -107.6, y: -44.4, z: 0}
+  m_LocalPosition: {x: -111.2, y: -41.3, z: 0}
   m_LocalScale: {x: 12.428187, y: 10.86967, z: 19.86568}
   m_Children:
   - {fileID: 271325485}
@@ -7676,7 +7676,7 @@ GameObject:
   - component: {fileID: 2085648843}
   - component: {fileID: 2085648842}
   m_Layer: 5
-  m_Name: Dropdown
+  m_Name: split_dropdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

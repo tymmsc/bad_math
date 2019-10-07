@@ -78,7 +78,7 @@ public class MergeSplitScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.DigitsToMerge!=null)
+        if (GameManager.instance.DigitsToMerge!=null && ((GameManager.instance.digitSelect && mode.Equals("split")) || (GameManager.instance.digitPairSelect && mode.Equals("merge"))))
         {
             //finally, call the operation
             Equation currentEquation = new Equation();
@@ -112,15 +112,21 @@ public class MergeSplitScript : MonoBehaviour
                     rightSide = rightSide.Insert(place, mergeList[currentDropSelection].second);
                 
             }
-           
-            GameManager.instance.currentEquationObj.GetComponent<Equation>().setEquation(leftSide, rightSide);
-            GameManager.instance.pastEquations.GetComponent<EquationArray>().PushEquation(currentEquation);
+
+            if ((rightSide.LastIndexOf('-') <=0) && (leftSide.LastIndexOf('-')<=0))
+            {
+                GameManager.instance.currentEquationObj.GetComponent<Equation>().setEquation(leftSide, rightSide);
+                GameManager.instance.pastEquations.GetComponent<EquationArray>().PushEquation(currentEquation);
+            }
+         
+
             GameManager.instance.DigitsToMerge = null;
             GameManager.instance.digitSelect = false;
             GameManager.instance.digitPairSelect = false;
             GameManager.instance.stringSelection = "";
             hideDropdown();
             GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
+            GetComponent<SpriteRenderer>().sprite = spriteImage;
 
         }
     }
