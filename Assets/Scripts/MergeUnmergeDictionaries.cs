@@ -18,7 +18,7 @@ public class MergeUnmergeDictionaries : MonoBehaviour
     public List<stringPair> mergeList;
     public List<stringPair> splitList;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         mergeList = new List<stringPair>();
         splitList = new List<stringPair>();

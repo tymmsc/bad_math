@@ -12,8 +12,7 @@ public class MergeSplitScript : MonoBehaviour
 
     private int selection = -1;
 
-    public GameObject operatorObject;
-    protected OperatorScript fs;
+
     public Dictionary<string, string> options;
     public string side;
     public string location;
@@ -24,6 +23,7 @@ public class MergeSplitScript : MonoBehaviour
     public List<MergeUnmergeDictionaries.stringPair> mergeList;
     public string mode; //merge or split
     public int currentDropSelection = 0;
+    public Sprite makeSelectionSprite;
 
     // Use this for initialization
 
@@ -48,7 +48,7 @@ public class MergeSplitScript : MonoBehaviour
 
         dropdown = dropdownObj.GetComponent<Dropdown>();
         dropdown.AddOptions(dropOptions);
-        fs = operatorObject.GetComponent<OperatorScript>();
+
         options = new Dictionary<string, string>();
         if (side != "")
         {
@@ -143,8 +143,8 @@ public class MergeSplitScript : MonoBehaviour
         {
             hideDropdown();
             GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f);
-
-                GameManager.instance.digitPairSelect = false;
+            GetComponent<SpriteRenderer>().sprite = spriteOver;
+            GameManager.instance.digitPairSelect = false;
             GameManager.instance.stringSelection = "";
                 GameManager.instance.digitSelect = false;
             currentDropSelection = 0;
@@ -176,6 +176,7 @@ public class MergeSplitScript : MonoBehaviour
         GameManager.instance.stringSelection = mergeList[target.value-1].first;
           
         GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
+        GetComponent<SpriteRenderer>().sprite = makeSelectionSprite;
         if (mode == "merge")
         {
             GameManager.instance.digitPairSelect = true;

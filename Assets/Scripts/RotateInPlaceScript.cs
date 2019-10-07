@@ -13,7 +13,7 @@ public class RotateInPlaceScript : OperatorScript
         {"5", null },
         {"6", null },
         {"7", null },
-        {"8", "∞" },
+        {"8", "00" },
         {"9",null },
         { "-","1"}
     };
