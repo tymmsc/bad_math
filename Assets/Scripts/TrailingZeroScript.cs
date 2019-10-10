@@ -36,6 +36,10 @@ public class TrailingZeroScript : OperatorScript
         if(options!=null && options.ContainsKey("number")){
             digit = options["number"];
         }
+        if(!digit.Equals("-") && (inputEq.rightSide[0]=='-' || inputEq.leftSide[0] == '-'))
+        {
+            return false;
+        }
         //the new strings are the old strings with 0s at the end
         if(side == "right") {
             string newRight = digit + inputEq.rightSide;

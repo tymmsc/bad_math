@@ -42,7 +42,7 @@ public class MergeSplitScript : MonoBehaviour
 
         List<string> dropOptions = new List<string>();
         foreach (MergeUnmergeDictionaries.stringPair sp in mergeList) {
-            string optionString = sp.first + "-->" + sp.second;
+            string optionString = sp.first + " -> " + sp.second;
             dropOptions.Add(optionString);
         }
 
@@ -112,8 +112,8 @@ public class MergeSplitScript : MonoBehaviour
                     rightSide = rightSide.Insert(place, mergeList[currentDropSelection].second);
                 
             }
-
-            if ((rightSide.LastIndexOf('-') <=0) && (leftSide.LastIndexOf('-')<=0))
+            Equation currentEq = GameManager.instance.currentEquationObj.GetComponent<Equation>();
+            if ((currentEq.checkIfValid(rightSide)) && (currentEq.checkIfValid(rightSide)))
             {
                 GameManager.instance.currentEquationObj.GetComponent<Equation>().setEquation(leftSide, rightSide);
                 GameManager.instance.pastEquations.GetComponent<EquationArray>().PushEquation(currentEquation);

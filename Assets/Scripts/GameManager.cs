@@ -20,10 +20,11 @@ public class GameManager : MonoBehaviour {
     public bool digitPairSelect = false;
     public string stringSelection = "";
     public DigitObject DigitsToMerge = null;
-
+    public int[] order;
 
     private void Awake()
     {
+        order = new int[] { 0, 10, 8, 1, 3, 7, 9, 6, 5, 2 };
         if (instance == null)
         {
             instance = this;
@@ -76,7 +77,15 @@ public class GameManager : MonoBehaviour {
     void initializeLevel()
     {
         //setting left side and right side
-        currentEquationObj.GetComponent<Equation>().setEquation( "0", level.ToString());
+        if (level >= order.Length)
+        {
+            currentEquationObj.GetComponent<Equation>().setEquation("0", level.ToString());
+        }
+        else
+        {
+            currentEquationObj.GetComponent<Equation>().setEquation("0", order[level].ToString());
+        }
+        
         pastEquations.GetComponent<EquationArray>().Reset();
         
     }

@@ -95,9 +95,23 @@ public class RotateInPlaceScript : OperatorScript
             string rotated = "";
             //if it's a single digit 1, it can't be rotated 90
             //and if it's a 1 that in't the first digit, it also can't
-            if (rotation==90 && toRotate.Equals("1") && (i != 0 || inputEq.leftSide.Length <= 1)){
-                return false;
+            //For a 1 to be able to rotate, it has to have a non-1 to the right, and only 1s to the right.
+            if (toRotate.Equals("1") && rotation==90)
+            {
+                for (int j=0; j<i; j++)
+                {
+                    if (inputEq.leftSide[j] != '1')
+                    {
+                        return false;
+                    }
+                }
+                if(inputEq.leftSide[inputEq.leftSide.Length-1] == '1')
+                {
+                    return false;
+                }
+               
             }
+              
             if (rotation == 180)
             {
                 if (!mapping180.ContainsKey(toRotate))
@@ -130,8 +144,20 @@ public class RotateInPlaceScript : OperatorScript
 
             string toRotate = inputEq.rightSide.Substring(i, 1);
             string rotated = "";
-            if (rotation == 90 && toRotate.Equals("1") && (i != 0 || inputEq.rightSide.Length <= 1)){
-                return false;
+            if (toRotate.Equals("1") && rotation == 90)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    if (inputEq.rightSide[j] != '1')
+                    {
+                        return false;
+                    }
+                }
+                if (inputEq.rightSide[inputEq.rightSide.Length - 1] == '1')
+                {
+                    return false;
+                }
+
             }
             if (rotation == 180)
             {
